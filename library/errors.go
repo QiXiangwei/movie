@@ -1,0 +1,25 @@
+package library
+
+const ERR_NO_USER_PHONE_IS_NULL    = 1000
+const ERR_NO_PHONE_NOT_MATCH       = 1001
+const ERR_NO_USER_PASSWARD_IS_NULL = 1002
+const ERR_NO_PHONE_EXISTED         = 1003
+const ERR_NO_REGISTER_FAILED       = 1004
+
+const ERR_STR_USER_PHONE_IS_NULL    = "手机号不能为空"
+const ERR_STR_PHONE_NOT_MATCH       = "手机号格式不正确"
+const ERR_STR_USER_PASSWORD_IS_NULL = "密码不能为空"
+const ERR_STR_PHONE_EXISTED         = "该手机号已注册"
+const ERR_STR_REGISTER_FAILED       = "注册失败，请稍后重试"
+
+var ERR_MAP = map[int]string{
+	ERR_NO_USER_PHONE_IS_NULL    : ERR_STR_USER_PHONE_IS_NULL,
+	ERR_NO_PHONE_NOT_MATCH       : ERR_STR_PHONE_NOT_MATCH,
+	ERR_NO_USER_PASSWARD_IS_NULL : ERR_STR_USER_PASSWORD_IS_NULL,
+	ERR_NO_PHONE_EXISTED         : ERR_STR_PHONE_EXISTED,
+	ERR_NO_REGISTER_FAILED       : ERR_STR_REGISTER_FAILED,
+}
+
+func ErrMap(errNo int) string {
+	return ERR_MAP[errNo]
+}
