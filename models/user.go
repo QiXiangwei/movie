@@ -60,6 +60,20 @@ func RegisterUser(phone string, password string) int64 {
 	return id
 }
 
+func LoginUser(phone string, password string) (int64, string) {
+	var (
+		u      User
+		err    error
+	)
+	if err = newUserOrm().QueryTable(library.TABLE_NAME_USER).Filter("Phone", phone).Filter("Password", password).One(&u); err != nil {
+		return 0, ""
+	}
+	if u.Id > 0 {
+		return u.Id, u.Name
+	}
+	return 0, ""
+}
+
 func init() {
 	orm.RegisterModelWithPrefix("tbl_", new(User))
 }
