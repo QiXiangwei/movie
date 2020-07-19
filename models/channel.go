@@ -54,13 +54,12 @@ func CreateChannel(name string) int64 {
 
 func OnlineChannel(channelId int64) bool {
 	var (
-		c   Channel
 		err error
 	)
-	c = Channel{
-		Status:     library.CHANNEL_STATUS_ONLINE,
-	}
-	if _, err = newChannelOrm().Update(c, "Status"); err != nil {
+	if _, err = newChannelOrm().
+		QueryTable(library.TABLE_NAME_CHANNEL).
+		Filter("Id", channelId).
+		Update(orm.Params{"Status": library.CHANNEL_STATUS_ONLINE}); err != nil {
 		return false
 	}
 	return true
@@ -68,13 +67,12 @@ func OnlineChannel(channelId int64) bool {
 
 func OfflineChannel(channelId int64) bool {
 	var (
-		c   Channel
 		err error
 	)
-	c = Channel{
-		Status:     library.CHANNEL_STATUS_OFFLINE,
-	}
-	if _, err = newChannelOrm().Update(c, "Status"); err != nil {
+	if _, err = newChannelOrm().
+		QueryTable(library.TABLE_NAME_CHANNEL).
+		Filter("Id", channelId).
+		Update(orm.Params{"Status": library.CHANNEL_STATUS_OFFLINE}); err != nil {
 		return false
 	}
 	return true
@@ -82,30 +80,19 @@ func OfflineChannel(channelId int64) bool {
 
 func DeleteChannel(channelId int64) bool {
 	var (
-		c   Channel
 		err error
 	)
-	c = Channel{
-		Id: channelId,
-	}
-	if _, err = newChannelOrm().Delete(c, "Id"); err != nil {
+	if _, err = newChannelOrm().
+		QueryTable(library.TABLE_NAME_CHANNEL).
+		Filter("Id", channelId).
+		Delete(); err != nil {
 		return false
 	}
 	return true
 }
 
 func IsExistedChannel(channelId int64) bool {
-	var (
-		c   Channel
-		err error
-	)
-	c = Channel{
-		Id: channelId,
-	}
-	if err = newChannelOrm().Read(&c, "Id"); err != nil {
-		return false
-	}
-	return true
+	return newChannelOrm().QueryTable(library.TABLE_NAME_CHANNEL).Filter("Id", channelId).Exist()
 }
 
 func init() {
