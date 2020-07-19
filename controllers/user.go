@@ -33,7 +33,7 @@ func (uc *UserController) UserRegister() {
 		uc.ServeJSON()
 	}
 	id = models.RegisterUser(phone, library.Md5(password))
-	if id == -1 {
+	if id == 0 {
 		uc.Data["json"] = ReturnError(library.ERR_NO_REGISTER_FAILED)
 		uc.ServeJSON()
 	}

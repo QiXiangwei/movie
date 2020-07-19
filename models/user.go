@@ -55,7 +55,7 @@ func RegisterUser(phone string, password string) int64 {
 		Avatar:       "",
 	}
 	if id, err = newUserOrm().Insert(&u); err != nil {
-		return -1
+		return 0
 	}
 	return id
 }
