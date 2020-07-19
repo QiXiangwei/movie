@@ -97,6 +97,51 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["movie/controllers:TypeController"] = append(beego.GlobalControllerRouter["movie/controllers:TypeController"],
+        beego.ControllerComments{
+            Method: "TypeCreate",
+            Router: "/type/create",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["movie/controllers:TypeController"] = append(beego.GlobalControllerRouter["movie/controllers:TypeController"],
+        beego.ControllerComments{
+            Method: "TypeDelete",
+            Router: "/type/delete",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["movie/controllers:TypeController"] = append(beego.GlobalControllerRouter["movie/controllers:TypeController"],
+        beego.ControllerComments{
+            Method: "TypeList",
+            Router: "/type/list",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["movie/controllers:TypeController"] = append(beego.GlobalControllerRouter["movie/controllers:TypeController"],
+        beego.ControllerComments{
+            Method: "TypeOffline",
+            Router: "/type/offline",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["movie/controllers:TypeController"] = append(beego.GlobalControllerRouter["movie/controllers:TypeController"],
+        beego.ControllerComments{
+            Method: "TypeOnline",
+            Router: "/type/online",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["movie/controllers:UserController"] = append(beego.GlobalControllerRouter["movie/controllers:UserController"],
         beego.ControllerComments{
             Method: "UserLogin",
